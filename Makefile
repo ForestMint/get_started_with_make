@@ -1,7 +1,8 @@
-string := toto;tata;titi;tutu;tyty
+prefix_before_slash = $(firstword $(subst /, ,$1))
+
+INPUT := tyty/bar/baz
+
+RESULT := $(call prefix_before_slash,$(INPUT))
 
 tokenize_string:
-	@TOKENS="$$(./tokenize_string.sh -s '$(string)')"; \
-	echo "$$TOKENS"; \
-	FIRST="$$(echo "$$TOKENS" | awk '{print $$1}')"; \
-	echo "$$FIRST"
+	@echo $(RESULT)
